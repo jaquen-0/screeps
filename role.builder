@@ -21,6 +21,7 @@ var roleBuilder = {
             }
             /** if there is nothing to build, repair stuff **/
             if(targets.length == 0) {
+                creep.say('🚧 repair');
                 const targets = creep.room.find(FIND_STRUCTURES, {
                     filter: object => object.hits < object.hitsMax
                 });
@@ -29,7 +30,8 @@ var roleBuilder = {
                 
                 if(targets.length > 0) {
                     if(creep.repair(targets[0]) == ERR_NOT_IN_RANGE) {
-                        creep.moveTo(targets[0]);
+                        /** creep.moveTo(targets[0]); **/
+                        creep.moveTo(targets[0], {visualizePathStyle: {stroke: '#ffffff'}});
                     }
                 }
             }
