@@ -1,0 +1,20 @@
+module.exports = {
+
+//Game.spawns['Spawn1'].spawnCreep([CLAIM,MOVE], "claimer", {memory: {role: 'claimer', target: 'E27N8'}});
+
+    run: function(creep) {
+        if (creep.room.name != creep.memory.target) {
+            // find exit to target room
+            var exit = creep.room.findExitTo(creep.memory.target);
+            // move to the exit
+            creep.moveTo(creep.pos.findClosestByRange(exit));
+        } else {
+            // try to claim the controller
+            if (creep.claimController(creep.room.controller) == ERR_NOT_IN_RANGE) {
+                // move to the controller
+                creep.moveTo(creep.room.controller);
+            }
+        }
+    }
+
+};
