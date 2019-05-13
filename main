@@ -2,7 +2,6 @@ var roleHarvester = require('role.harvester');
 var roleUpgrader = require('role.upgrader');
 var roleBuilder = require('role.builder');
 var roleClaimer = require('role.claimer');
-global.common = require('common');
 var logger;
 
 module.exports.loop = function () {
